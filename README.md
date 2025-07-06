@@ -1,35 +1,79 @@
-# 🖼️ Background Image Remov using Python and Flask
+# 🖼️ Background Image Remover using Python and Flask
 
-A web-based tool to **remove background from images** and **generate videos using text, images, and ElevenLabs AI voice**. Built using **Python**, **Flask**, and **ElevenLabs API**.
+A simple web app to remove image backgrounds using Python, Flask, and the `rembg` library.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Upload an image and remove its background
-- 🧠 Generate voice from text using ElevenLabs API
-- 🎞️ Combine image and voice to create a short video
-- 🌐 Flask backend with a simple web interface
-- 🎨 Supports multiple image formats
-- 📤 Export downloadable video output
-
----
-
-## 🛠️ Tech Stack
-
-- **Backend**: Python, Flask
-- **AI Voice**: [ElevenLabs API](https://www.elevenlabs.io/)
-- **Image Processing**: `rembg`, PIL
-- **Video Creation**: `moviepy`
-- **Frontend**: HTML/CSS (extendable with JS/React)
+- Upload image and remove background automatically
+- Fast and accurate removal using `rembg`
+- Download background-removed image
+- Responsive UI with preview
+- Clean and aesthetic design
 
 ---
 
 ## 📦 Installation
 
+1. **Clone the repository**:
+
 ```bash
-git clone https://github.com/yourusername/background-image-remove-video.git
-cd background-image-remove-video
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
+git clone https://github.com/codinggujarat/BG-Eraser-Python-Flask.git
+cd background-remover-flask
+```
+
+2. **Install dependencies**:
+
+```bash
+pip install flask rembg opencv-python
+```
+
+> ⚠️ Fix for Numba/Numpy error (if needed):
+
+```bash
+pip install "numpy<=2.2"
+```
+
+---
+
+## ▶️ Run the App
+
+```bash
+python app.py
+```
+
+Then open your browser at:
+
+```
+http://localhost:5000
+```
+
+---
+
+## 📁 Project Structure
+
+```
+background-remover-flask/
+├── app.py
+├── templates/
+│   └── index.html
+├── static/
+│   └── uploads/
+├── README.md
+```
+
+---
+
+## 💡 How It Works
+
+- User uploads an image
+- `rembg` processes the image and removes the background
+- The output image is shown with a download option
+
+---
+
+## 👤 Author
+
+Built with Python and Flask  
+[AMAN / GitHub Profile]
