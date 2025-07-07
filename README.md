@@ -15,7 +15,7 @@ A simple web app to remove image backgrounds using Python, Flask, and the `rembg
 ---
 ## 📸 Demo
 
-![Demo Screenshot](/static/preview.png)
+![Demo Screenshot](/static/preview-bgrm.png)
 
 Try it live or clone it locally.
 
