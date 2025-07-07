@@ -60,11 +60,9 @@
     </style>
     <style>
         body {
+            background: black;
             margin: 0;
             font-family: 'Chillax', sans-serif;
-            background: linear-gradient(90deg, #800880, #ff006e, #ffaa00, #00ff75, #00cfff);
-            background-size: 200% 200%;
-            animation: gradientBG 15s ease infinite;
             color: white;
             text-align: center;
             min-height: 100vh;
@@ -90,7 +88,7 @@
         }
 
         h1 {
-            font-size: clamp(3rem, 8vw, 8rem);
+            font-size: clamp(3rem, 8vw, 7rem);
             /* min 3rem, ideal 8vw, max 10rem */
             margin-bottom: 20px;
             font-weight: 900 !important;
@@ -99,7 +97,7 @@
         }
 
         p {
-            font-size: clamp(1.25rem, 2.5vw, 2rem);
+            font-size: clamp(1.25rem, 2.5vw, 1rem);
             margin-bottom: 40px;
             max-width: 800px;
             width: 100%;
@@ -160,63 +158,84 @@
             align-items: center;
             justify-content: center;
         }
+
+        .container-box {
+            padding: 80px;
+            background: linear-gradient(90deg, #800880, #ff006e, #ffaa00, #00ff75, #00cfff);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            border-radius: 50px;
+
+        }
+
+        .paragraph {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
-    <h1> AI BG Remover</h1>
-    <p>Designed to elevate your workflow, this tool makes removing backgrounds effortless with AI.</p>
+    <div class="container-box">
+        <div class="">
+            <h1> AI BG Remover</h1>
+            <div class="paragraph">
+                <p>Designed to elevate your workflow, this tool makes removing backgrounds effortless with AI.</p>
+            </div>
 
-    <form action="/remback" method="POST" enctype="multipart/form-data">
-        <div class="button-group">
-            <label for="file" class="btns windows" style="cursor: pointer;">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path
-                            d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15"
-                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                    </g>
-                </svg>
-                Click to upload image
-            </label>
-            <input type="file" id="file" name="file" class="form-control" required style="display: none;">
+            <form action="/remback" method="POST" enctype="multipart/form-data">
+                <div class="button-group">
+                    <label for="file" class="btns windows" style="cursor: pointer;">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15"
+                                    stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
+                        </svg>
+                        Click to upload image
+                    </label>
+                    <input type="file" id="file" name="file" class="form-control" required style="display: none;">
 
 
-            <button class="submit" class="btns all-downloads" style="background: #000;color: #fff; border: 0; padding: 20px !important; display: flex;
-                                                    align-items: center;
-                                                    gap: 10px;
-                                                    padding: 15px 25px;
-                                                    border-radius: 12px;
-                                                    font-size: 1rem;
-                                                    font-weight: 600;
-                                                    border: none;
-                                                    cursor: pointer;
-                                                    transition: transform 0.2s, box-shadow 0.2s;
-                                                    text-decoration: none;">Remove
-                Background</button>
+                    <button class="submit" class="btns all-downloads" style="background: #000;color: #fff; border: 0; padding: 20px !important; display: flex;
+                                                                align-items: center;
+                                                                gap: 10px;
+                                                                padding: 15px 25px;
+                                                                border-radius: 12px;
+                                                                font-size: 1rem;
+                                                                font-weight: 600;
+                                                                border: none;
+                                                                cursor: pointer;
+                                                                transition: transform 0.2s, box-shadow 0.2s;
+                                                                text-decoration: none;">Remove
+                        Background</button>
+                </div>
+            </form>
+
         </div>
-    </form>
+        {% if rembg_img_name %}
+        <div class="output-div" id="output-div">
+            <div class="preview-box">
+                <h3>Original Image</h3>
+                <img src="../static/uploads/{{ org_img_name }}" alt="Original Image">
+            </div>
 
-
-    {% if rembg_img_name %}
-    <div class="output-div" id="output-div">
-        <div class="preview-box">
-            <h3>Original Image</h3>
-            <img src="../static/uploads/{{ org_img_name }}" alt="Original Image">
+            <div class="preview-box">
+                <h3>Background Removed</h3>
+                <img src="../static/uploads/{{ rembg_img_name }}" alt="Processed Image">
+                <a href="../static/uploads/{{ rembg_img_name }}" download class="btns download-btn">
+                    Download Image
+                </a>
+            </div>
         </div>
-
-        <div class="preview-box">
-            <h3>Background Removed</h3>
-            <img src="../static/uploads/{{ rembg_img_name }}" alt="Processed Image">
-            <a href="../static/uploads/{{ rembg_img_name }}" download class="btns download-btn">
-                Download Image
-            </a>
-        </div>
+        {% endif %}
     </div>
-    {% endif %}
 
 </body>
 
